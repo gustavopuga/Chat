@@ -36,22 +36,22 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>se.scalablesolutions.akka</groupId>
-			<artifactId>akka-cassandra</artifactId>
-			<version>1.0-RC06</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>se.scalablesolutions.akka</groupId> -->
+<!-- 			<artifactId>akka-persistence-cassandra</artifactId> -->
+<!-- 			<version>1.0</version> -->
+<!-- 		</dependency> -->
 
-		<dependency>
-			<groupId>se.scalablesolutions.akka</groupId>
-			<artifactId>akka-voldemort</artifactId>
-			<version>1.0-RC06</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>se.scalablesolutions.akka</groupId> -->
+<!-- 			<artifactId>akka-persistence-voldemort</artifactId> -->
+<!-- 			<version>1.0</version> -->
+<!-- 		</dependency> -->
 		
 		<dependency>
 			<groupId>se.scalablesolutions.akka</groupId>
-			<artifactId>akka-redis</artifactId>
-			<version>1.0-RC06</version>
+			<artifactId>akka-persistence-redis</artifactId>
+			<version>1.0</version>
 		</dependency>
 
 		<dependency>
@@ -207,7 +207,7 @@
 		<repository>
 			<id>Akka</id>
 			<name>Akka Maven2 Repository</name>
-			<url>http://akka.io/repository/ </url>
+			<url>http://akka.io/repository/</url>
 		</repository>
 
 		<repository>
