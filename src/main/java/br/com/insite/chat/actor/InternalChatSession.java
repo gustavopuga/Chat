@@ -14,7 +14,7 @@ public class InternalChatSession extends UntypedActor{
 	
 	private static final Logger log = Logger.getLogger(InternalChatSession.class);
 	
-	private ActorRef storage = null;
+	private ActorRef storage;
     private final long loginTime = System.currentTimeMillis();
     private List<String> userLog = new ArrayList<String>();
 
