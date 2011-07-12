@@ -1,14 +1,14 @@
 package br.com.insite.chat.actor;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import akka.actor.ActorRef;
+import akka.actor.Actors;
 import akka.actor.UntypedActor;
-import br.com.insite.chat.event.MessageEvent;
+import br.com.insite.chat.actor.factory.ChatStorageMessageFactory;
+import br.com.insite.chat.event.message.ChatMessageEvent;
 
 public class InternalChatSession extends UntypedActor{
 	
@@ -16,22 +16,23 @@ public class InternalChatSession extends UntypedActor{
 	
 	private ActorRef storage;
     private final long loginTime = System.currentTimeMillis();
-    private List<String> userLog = new ArrayList<String>();
 
-    public InternalChatSession(String user, ActorRef storage) {
-            this.storage = storage;
+    public InternalChatSession(String user) {
+            this.storage = Actors.actorOf(new ChatStorageMessageFactory()).start();
             log.info("Nova sessao criada para usuario [" + user + "] as [" + new Date(loginTime) + "]");
     }
 
     public void onReceive(Object event) throws Exception {
-            if (event instanceof MessageEvent) {
-                    userLog.add(((MessageEvent) event).getMessage());
+            if (event instanceof ChatMessageEvent) {
                     storage.sendOneWay(event);
             } 
-//            else if (msg instanceof GetChatLog) {
-//                    storage.forward(msg, getContext());
-//            }
-
+    }
+    
+    @Override
+    public void postStop() {
+    	super.postStop();
+    	getContext().unlink(storage);
+		storage.stop();
     }
 
 }

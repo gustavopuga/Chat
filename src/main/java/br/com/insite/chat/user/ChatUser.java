@@ -1,17 +1,18 @@
 package br.com.insite.chat.user;
 
 import static akka.actor.Actors.remote;
+import static br.com.insite.chat.user.ChatServiceProperties.HOSTNAME;
+import static br.com.insite.chat.user.ChatServiceProperties.PORT;
+import static br.com.insite.chat.user.ChatServiceProperties.SERVICE_ID;
 import akka.actor.ActorRef;
-import akka.actor.Actors;
+import br.com.insite.chat.event.LoginEvent;
+import br.com.insite.chat.event.LogoutEvent;
+import br.com.insite.chat.event.message.ChatMessageEvent;
 
 public abstract class ChatUser {
 	
-	private final String SERVICE_ID = "chat:service";
-	private final String HOSTNAME = "localhost";
-	private final int PORT = 2552;
-	
-	private String name = null;
-	private ActorRef chat = null;
+	private String name;
+	private ActorRef chat;
 
 	protected ChatUser (String name) {
 		
@@ -22,14 +23,45 @@ public abstract class ChatUser {
 	}
 
 	public void login() {
-//		chat.sendOneWay(new Login(name));
+		getChat().sendOneWay(new LoginEvent(this));
 	}
 
 	public void logout() {
-//		chat.sendOneWay(new Logout(name));
+		getChat().sendOneWay(new LogoutEvent(this));
 	}
 
 	public abstract void post(String message);
-//		chat.sendOneWay(new ChatMessage(name, name + ": " + message));
 	
+	protected void postMessageEvent(ChatMessageEvent event){
+		getChat().sendOneWay(event);
+	}
+
+	protected String formatMessageAddUsername(String message) {
+		return getName() + ": " + message;
+	}
+	
+	protected String formatMessageRemoveUsername(String message) {
+		
+		int indexOf = message.indexOf(getName() + ": ");
+		return message.substring(indexOf) ;
+	}
+	
+	public ActorRef getChat() {
+		return chat;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		
+		if (object instanceof ChatUser) {
+			ChatUser chatUser = (ChatUser) object;
+			return this.getName().equals(chatUser.getName());
+		}
+		
+		return false;
+	}
 }

@@ -36,18 +36,18 @@
 			<scope>provided</scope>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>se.scalablesolutions.akka</groupId> -->
-<!-- 			<artifactId>akka-persistence-cassandra</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+			<groupId>se.scalablesolutions.akka</groupId>
+			<artifactId>akka-persistence-cassandra</artifactId>
+			<version>1.0</version>
+		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>se.scalablesolutions.akka</groupId> -->
-<!-- 			<artifactId>akka-persistence-voldemort</artifactId> -->
-<!-- 			<version>1.0</version> -->
-<!-- 		</dependency> -->
-		
+		<dependency>
+			<groupId>se.scalablesolutions.akka</groupId>
+			<artifactId>akka-persistence-voldemort</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 		<dependency>
 			<groupId>se.scalablesolutions.akka</groupId>
 			<artifactId>akka-persistence-redis</artifactId>
@@ -200,6 +200,12 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.9.0-1</version>
+		</dependency>
+
 	</dependencies>
 
 	<repositories>
@@ -209,6 +215,12 @@
 			<name>Akka Maven2 Repository</name>
 			<url>http://akka.io/repository/</url>
 		</repository>
+
+		<repository>
+            <id>scala-tools.org</id>
+            <name>Scala-tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </repository>
 
 		<repository>
 			<id>JBoss</id>
@@ -242,7 +254,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+<!-- 				<version>2.3.2</version> -->
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -250,21 +262,35 @@
 			</plugin>
 
 			<plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			
+
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.1</version>
+<!-- 				<version>2.1</version> -->
 			</plugin>
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.4</version>
+<!-- 				<version>2.4</version> -->
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.1-beta-1</version>
+<!-- 				<version>2.1-beta-1</version> -->
 			</plugin>
 
 		</plugins>
