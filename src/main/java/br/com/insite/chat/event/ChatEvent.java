@@ -2,9 +2,9 @@ package br.com.insite.chat.event;
 
 import java.io.Serializable;
 
-import br.com.insite.chat.user.ChatUser;
+import br.com.insite.chat.model.user.ChatUser;
 
-public class ChatEvent implements Serializable {
+public abstract class ChatEvent implements Serializable {
 
 	private static final long serialVersionUID = -2864695789336406840L;
 	

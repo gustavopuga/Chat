@@ -1,6 +1,6 @@
-package br.com.insite.chat.user;
+package br.com.insite.chat.chat_room.property;
 
-public interface ChatServiceProperties {
+public interface ChatRoomProperties {
 
 	public static final String SERVICE_ID = "chat:service";
 	public static final String HOSTNAME = "localhost";

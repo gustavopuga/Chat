@@ -1,8 +1,8 @@
-package br.com.insite.chat.actor.factory;
+package br.com.insite.chat.chat_room.factory;
 
 import akka.actor.Actor;
 import akka.actor.UntypedActorFactory;
-import br.com.insite.chat.actor.ChatStorageMessage;
+import br.com.insite.chat.chat_room.ChatStorageMessage;
 
 public class ChatStorageMessageFactory implements UntypedActorFactory{
 

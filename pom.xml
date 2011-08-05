@@ -206,6 +206,12 @@
 			<version>2.9.0-1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.cassandra</groupId>
+			<artifactId>cassandra-all</artifactId>
+			<version>0.8.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<repositories>
@@ -217,10 +223,10 @@
 		</repository>
 
 		<repository>
-            <id>scala-tools.org</id>
-            <name>Scala-tools Maven2 Repository</name>
-            <url>http://scala-tools.org/repo-releases</url>
-        </repository>
+			<id>scala-tools.org</id>
+			<name>Scala-tools Maven2 Repository</name>
+			<url>http://scala-tools.org/repo-releases</url>
+		</repository>
 
 		<repository>
 			<id>JBoss</id>
@@ -254,7 +260,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-<!-- 				<version>2.3.2</version> -->
+				<!-- <version>2.3.2</version> -->
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -262,35 +268,35 @@
 			</plugin>
 
 			<plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-			
+				<groupId>org.scala-tools</groupId>
+				<artifactId>maven-scala-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile</goal>
+							<goal>testCompile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
-<!-- 				<version>2.1</version> -->
+				<!-- <version>2.1</version> -->
 			</plugin>
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
-<!-- 				<version>2.4</version> -->
+				<!-- <version>2.4</version> -->
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-<!-- 				<version>2.1-beta-1</version> -->
+				<!-- <version>2.1-beta-1</version> -->
 			</plugin>
 
 		</plugins>

@@ -1,15 +1,16 @@
-package br.com.insite.chat.user;
+package br.com.insite.chat.model.user;
 
 import static akka.actor.Actors.remote;
-import static br.com.insite.chat.user.ChatServiceProperties.HOSTNAME;
-import static br.com.insite.chat.user.ChatServiceProperties.PORT;
-import static br.com.insite.chat.user.ChatServiceProperties.SERVICE_ID;
+import static br.com.insite.chat.chat_room.property.ChatRoomProperties.HOSTNAME;
+import static br.com.insite.chat.chat_room.property.ChatRoomProperties.PORT;
+import static br.com.insite.chat.chat_room.property.ChatRoomProperties.SERVICE_ID;
 import akka.actor.ActorRef;
-import br.com.insite.chat.event.LoginEvent;
-import br.com.insite.chat.event.LogoutEvent;
+import akka.actor.UntypedActor;
 import br.com.insite.chat.event.message.ChatMessageEvent;
+import br.com.insite.chat.event.registration.LoginEvent;
+import br.com.insite.chat.event.registration.LogoutEvent;
 
-public abstract class ChatUser {
+public abstract class ChatUser extends UntypedActor {
 	
 	private String name;
 	private ActorRef chat;
@@ -30,9 +31,7 @@ public abstract class ChatUser {
 		getChat().sendOneWay(new LogoutEvent(this));
 	}
 
-	public abstract void post(String message);
-	
-	protected void postMessageEvent(ChatMessageEvent event){
+	protected void sendEvent(ChatMessageEvent event){
 		getChat().sendOneWay(event);
 	}
 

@@ -1,8 +1,8 @@
-package br.com.insite.chat.event;
+package br.com.insite.chat.event.registration;
 
-import br.com.insite.chat.user.ChatUser;
+import br.com.insite.chat.model.user.ChatUser;
 
-public class LogoutEvent extends ChatEvent {
+public class LogoutEvent extends RegistrationChatEvent{
 
 	private static final long serialVersionUID = -2648348397423433176L;
 
