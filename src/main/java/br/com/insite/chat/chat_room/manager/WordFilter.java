@@ -6,7 +6,6 @@ import java.util.StringTokenizer;
 
 public class WordFilter {
 
-	private static final long serialVersionUID = -4496682154031390364L;
 	private Map<String, String> wordsMap;
 
 	public WordFilter() {
